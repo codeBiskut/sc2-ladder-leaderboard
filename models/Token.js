@@ -1,6 +1,6 @@
 const { Schema, model, Types} = require('mongoose');
 
-const authSchema = new Schema(
+const tokenSchema = new Schema(
     {
         access_token:{
             Type: String
@@ -14,6 +14,6 @@ const authSchema = new Schema(
     }
 )
 
-const Auth = model('Auth', authSchema);
+const Token = model('Token', tokenSchema);
 
-module.exports = Auth;
+module.exports = Token;

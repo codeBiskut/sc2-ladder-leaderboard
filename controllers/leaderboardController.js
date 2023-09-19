@@ -1,4 +1,4 @@
-const { leaderboard } = require('../models');
+const { leaderboard} = require('../models/Leaderboard');
 
 module.exports = {
     //get leaderboard

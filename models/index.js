@@ -1,4 +1,4 @@
-const leaderboard = require('./leaderboard');
-const auth = require('./Auth');
+const leaderboard = require('./Leaderboard');
+const token = require('./Token');
 
-module.exports = { leaderboard, Auth}
+module.exports = { leaderboard, token}
