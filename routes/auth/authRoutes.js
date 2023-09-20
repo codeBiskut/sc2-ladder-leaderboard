@@ -1,11 +1,9 @@
 const router = require('express').Router();
 
 const {
-    getToken, displayToken
-} = require('../../controllers/tokenController.js');
+    getAuthToken
+} = require('../../controllers/authController.js');
 
-// /auth
-router.route('/auth').get(getToken);
-router.route('/displayauth').get(displayToken);
+router.route('/getAuthToken').get(getAuthToken);
 
 module.exports = router;
