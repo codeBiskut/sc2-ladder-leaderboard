@@ -3,20 +3,34 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 async function getAuthToken(req, res) {
-    try {
-        // Make an API call to obtain the authentication token from the Blizzard API
-        const response = await axios.post('https://us.battle.net/oauth/token', {
-            grant_type: 'client_credentials',
-            client_id: process.env.CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
-        });
+    let authToken;
 
-        // Return the authentication token as JSON response
-        res.json({ authToken: response.data.access_token });
-    } catch (error) {
-        console.error('Error fetching authentication token:', error);
-        res.status(500).json({ error: 'Error fetching authentication token' });
-    }
+    // Define the OAuth token request parameters
+    const authUrl = 'https://us.battle.net/oauth/token';
+    const grantType = 'client_credentials';
+
+    // Construct the request data
+    const requestData = `grant_type=${grantType}`;
+
+    // Define the headers with your client ID and secret
+    const headers = {
+        'Authorization': `Basic ${Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`).toString('base64')}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+    };
+
+    // Make the GET request to retrieve the OAuth token
+    axios.post(authUrl, requestData, { headers })
+        .then(response => {
+            // Get the access token response
+            authToken = response.data.access_token;
+            
+            // Send a JSON response and print to console
+            res.json({ authToken })
+            console.log(`Access Token: ${authToken}`);
+        })
+        .catch(error => {
+            console.error('Error fetching OAuth token:', error);
+        });
 }
 
 module.exports = {
