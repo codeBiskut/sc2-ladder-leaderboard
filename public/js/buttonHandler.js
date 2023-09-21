@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     leaderboardButton.addEventListener('click', async () => {
         try{
             const response = await axios.get('/api/leaderboard/getGrandmasterLeaderboard');
+
         }
         catch(error){
             console.error('Error fetching Grandmaster Leaderboard:', error);

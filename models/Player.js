@@ -2,42 +2,18 @@ const { Schema, model, Types} = require('mongoose');
 
 const playerSchema = new Schema(
     {
-        playerId:{
-            Type: Number
-        },
-        realm:{
-            Type: Number
-        },
-        region:{
-            Type: Number
-        },
-        displayName:{
-            Type: String
-        },
-        clanTag:{
-            Type: String
-        },
-        favoriteRace:{
-            Type: String
-        },
-        previousRank:{
-            Type: Number
-        },
-        points:{
-            Type: Number
-        },
-        wins:{
-            Type: Number
-        },
-        losses:{
-            Type: Number
-        },
-        mmr:{
-            Type: Number
-        },
-        joinTimestamp:{
-            Type: Number
-        }
+        playerId: Number,
+        realm: Number,
+        region: Number,
+        displayName:String,
+        clanTag:String,
+        favoriteRace:String,
+        previousRank:Number,
+        points:Number,
+        wins:Number,
+        losses:Number,
+        mmr:Number,
+        joinTimestamp:Number
     }
 );
 
