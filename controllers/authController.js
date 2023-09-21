@@ -1,5 +1,7 @@
 const axios = require('axios')
 const dotenv = require('dotenv')
+const Token = require('../models/Token')
+const mongoose = require('mongoose')
 dotenv.config();
 
 async function getAuthToken(req, res) {
@@ -20,10 +22,19 @@ async function getAuthToken(req, res) {
 
     // Make the GET request to retrieve the OAuth token
     axios.post(authUrl, requestData, { headers })
-        .then(response => {
+        .then(async response => {
             // Get the access token response
             authToken = response.data.access_token;
-            
+
+            // Send to mongodb
+            try {
+                const newToken = new Token({ access_token: authToken });
+                await newToken.save();
+                console.log('Token saved successfully');
+              } catch (error) {
+                console.error('Error saving token:', error);
+              }
+
             // Send a JSON response and print to console
             res.json({ authToken })
             console.log(`Access Token: ${authToken}`);

@@ -2,9 +2,7 @@ const { Schema, model, Types} = require('mongoose');
 
 const tokenSchema = new Schema(
     {
-        access_token:{
-            Type: String
-        }
+        access_token: String,
     }
 )
 
