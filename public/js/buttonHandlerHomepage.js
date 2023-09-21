@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const authButton = document.getElementById('authButton');
     const leaderboardButton = document.getElementById('leaderboardButton');
+    const switchButton = document.getElementById('switchButton')
+    const homepageButton = document.getElementById('homepageButton')
     const authTokenSpan = document.getElementById('authToken');
 
     authButton.addEventListener('click', async () => {
@@ -29,4 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching Grandmaster Leaderboard:', error);
         }
     });
+    switchButton.addEventListener('click', async () => {
+        try{
+            window.location.href = '/leaderboard'
+        }catch(error){
+            console.error('Error displaying leaderboard page:', error);
+        }
+    })
 });
