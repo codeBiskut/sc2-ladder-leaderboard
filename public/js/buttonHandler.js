@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //     method: 'GET',
         //     url: 'https://us.api.blizzard.com/sc2/ladder/grandmaster/1',
         //     headers: {
-        //       Authorization: 'Bearer USZjGE45roRwGP6Xf1wzw2iH5RAFQ4oCE0'
+        //       Authorization: 'Bearer '
         //     }
         //   };
           
