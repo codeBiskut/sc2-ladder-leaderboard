@@ -35,7 +35,7 @@ async function getGrandmasterLeaderboard(req, res) {
     axios.get(authUrl, { headers })
         .then(async response => {
             leaderboard = response.data.ladderTeams;
-            for (const player of leaderboard){
+            for (const player of leaderboard) {
                 try {
                     const newPlayer = new Player({
                         playerId: player.teamMembers[0].playerId,
@@ -65,6 +65,18 @@ async function getGrandmasterLeaderboard(req, res) {
         })
 }
 
+async function displayLeaderboard(req, res) {
+    try {
+        const players = await Player.find(); // Fetch all players from MongoDB
+        const jsonplayers = players.map(player => player.toObject());
+        res.render('home'); // Render the players Handlebars template with the player data
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching players');
+    }
+}
+
 module.exports = {
-    getGrandmasterLeaderboard
+    getGrandmasterLeaderboard,
+    displayLeaderboard
 };

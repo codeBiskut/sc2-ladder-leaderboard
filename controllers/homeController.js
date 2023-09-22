@@ -10,7 +10,7 @@ exports.renderHomePage = (req, res) => {
 
 exports.renderLeaderboardPage = (req, res) => {
   try {
-    res.render('leaderboard');
+    res.render('leaderboard', { layout: 'leaderboard' });
   } catch (error) {
     console.error('Error in leaderboard render:', error);
     res.status(500).send('Internal Server Error');

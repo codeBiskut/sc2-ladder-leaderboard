@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const authButton = document.getElementById('authButton');
     const leaderboardButton = document.getElementById('leaderboardButton');
     const switchButton = document.getElementById('switchButton')
-    const homepageButton = document.getElementById('homepageButton')
     const authTokenSpan = document.getElementById('authToken');
 
     authButton.addEventListener('click', async () => {
